@@ -13,10 +13,6 @@ include(asv_cmake_defaults)
 asv_cmake_defaults( )
 ###############
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED YES)
-set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
-
 option(PL_BUILD_GUI "Build the GUI test tool" ON)
 
 # Define an object library to build equivalent shared and static libraries
