@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.24.0)
+cmake_minimum_required(VERSION 3.30)
 project(perfect-loader
     VERSION "1.0"
     DESCRIPTION "A perfect loader implementation"
@@ -18,27 +18,14 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED YES)
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 
-add_library(${PROJECT_NAME} STATIC)
-target_sources(${PROJECT_NAME} PRIVATE
-    include/perfect_loader.hpp
-    include/pl/hook.hpp
-    include/pl/lazy.hpp
-    include/pl/mmap.hpp
-    include/pl/pe.hpp
-    include/pl/types.hpp
-)
-target_include_directories(${PROJECT_NAME} PUBLIC include)
+install(
+    FILES include/perfect_loader.hpp include/perfect_loader.h
+    DESTINATION include/perfect_loader
+    )
 
-add_library(${CLIB} SHARED)
-target_sources(${CLIB} PRIVATE include/perfect_loader.h)
-target_link_libraries(${CLIB} PRIVATE ${PROJECT_NAME})
-
-if (${MAIN_PROJECT})
-    add_executable(run)
-    target_link_libraries(run PRIVATE ${CLIB} ${PROJECT_NAME})
-
-    add_library(testdll SHARED)
-    target_link_libraries(testdll PRIVATE ${PROJECT_NAME})
-endif()
+install(
+    DIRECTORY include/pl
+    DESTINATION include/perfect_loader
+    )
 
 add_subdirectory(source)
