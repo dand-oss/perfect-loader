@@ -21,10 +21,6 @@ include(asv_cmake_defaults)
 asv_cmake_defaults( )
 ###############
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED YES)
-set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
-
 install(
     FILES include/perfect_loader.hpp include/perfect_loader.h
     DESTINATION include/perfect_loader
