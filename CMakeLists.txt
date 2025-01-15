@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.24.0)
+cmake_minimum_required(VERSION 3.30)
 project(perfect-loader
     VERSION "2.0"
     DESCRIPTION "A perfect loader implementation"
@@ -31,6 +31,16 @@ target_sources(pl PRIVATE
     include/pl/mmap.hpp
     include/pl/pe.hpp
     include/pl/types.hpp
+)
+
+install(
+    FILES include/perfect_loader.hpp include/perfect_loader.h
+    DESTINATION include/perfect_loader
+)
+
+install(
+    DIRECTORY include/pl
+    DESTINATION include/perfect_loader
 )
 
 if (${CMAKE_PROJECT_NAME} STREQUAL ${PROJECT_NAME})

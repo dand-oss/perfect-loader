@@ -16,9 +16,18 @@ if (${CMAKE_PROJECT_NAME} STREQUAL ${PROJECT_NAME})
     target_sources(run PRIVATE run.cpp)
 
     target_sources(testdll PRIVATE dllmain.cpp)
-    
+
     if (PL_BUILD_GUI)
         target_sources(gui PRIVATE gui.cpp gui_icons.rc)
         target_link_libraries(gui PRIVATE d3d11.lib)
     endif()
+
+    install(TARGETS run testdll DESTINATION bin)
 endif()
+
+install(
+    TARGETS pl_shared pl_static
+    ARCHIVE DESTINATION lib
+    LIBRARY DESTINATION lib
+    RUNTIME DESTINATION bin
+)
