@@ -9,6 +9,7 @@ target_sources(pl PRIVATE
 if(CMAKE_SIZEOF_VOID_P EQUAL 8)
     target_sources(pl PRIVATE pic_x64.asm)
 endif()
+set_target_properties(pl_shared PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
 target_link_libraries(pl_shared PUBLIC Shlwapi.lib)
 target_link_libraries(pl_static PUBLIC Shlwapi.lib)
 

@@ -45,7 +45,7 @@ install(
 
 if (${CMAKE_PROJECT_NAME} STREQUAL ${PROJECT_NAME})
     add_executable(run)
-    target_link_libraries(run PRIVATE pl_static)
+    target_link_libraries(run PRIVATE pl_shared)
 
     add_library(testdll SHARED)
 
@@ -74,7 +74,7 @@ if (${CMAKE_PROJECT_NAME} STREQUAL ${PROJECT_NAME})
 
         # Define the test gui for perfect-loader
         add_executable(gui WIN32)
-        target_link_libraries(gui PRIVATE imgui pl_static)
+        target_link_libraries(gui PRIVATE imgui pl_shared)
     endif()
 endif()
 
