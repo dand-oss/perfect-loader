@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.30)
 
-add_library(${PROJECT_NAME} STATIC)
+add_library(${PROJECT_NAME} SHARED)
 target_include_directories(${PROJECT_NAME} PUBLIC ../include)
 target_link_libraries(${PROJECT_NAME} PUBLIC KtmW32.lib)
 target_sources(${PROJECT_NAME} PRIVATE
@@ -15,6 +15,7 @@ target_sources(${PROJECT_NAME} PRIVATE
     loader.cpp
     mmap.cpp
 )
+set_target_properties(${PROJECT_NAME} PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
 add_library(${CLIB} SHARED)
 target_link_libraries(${CLIB} PRIVATE ${PROJECT_NAME})
